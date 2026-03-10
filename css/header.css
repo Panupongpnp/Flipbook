@@ -1,0 +1,145 @@
+/* ===========================================
+   HEADER STYLES
+   =========================================== */
+
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--header-height);
+  z-index: var(--z-sticky);
+  background: rgba(13,13,13,0.75);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  animation: fadeIn var(--duration-slow) var(--ease-out);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+}
+
+/* ─── Logo ─── */
+.header-logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.header-logo-icon {
+  width: 36px;
+  height: 36px;
+  background: var(--gradient-accent);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--fs-md);
+  color: var(--color-white);
+  font-weight: var(--fw-bold);
+  box-shadow: var(--shadow-accent);
+  position: relative;
+  overflow: hidden;
+}
+
+.header-logo-icon::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, transparent 50%);
+}
+
+.header-logo-text {
+  font-family: var(--font-heading);
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-semibold);
+  color: var(--color-white);
+  letter-spacing: var(--ls-wide);
+}
+
+.header-logo-text span {
+  color: var(--color-accent-light);
+}
+
+/* ─── Navigation ─── */
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+}
+
+.header-nav-link {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  color: var(--color-gray-400);
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+  transition: color var(--duration-fast) var(--ease-out);
+  position: relative;
+}
+
+.header-nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--gradient-accent);
+  border-radius: var(--radius-full);
+  transition: width var(--duration-normal) var(--ease-out);
+}
+
+.header-nav-link:hover,
+.header-nav-link.active {
+  color: var(--color-white);
+}
+
+.header-nav-link:hover::after,
+.header-nav-link.active::after {
+  width: 100%;
+}
+
+/* ─── Accent Line ─── */
+.header-accent-line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, var(--color-red-500) 50%, transparent 100%);
+  opacity: 0.5;
+}
+
+/* ─── Status Badge ─── */
+.header-status {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--fs-xs);
+  color: var(--color-gray-500);
+  letter-spacing: var(--ls-wider);
+  text-transform: uppercase;
+}
+
+.header-status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: var(--radius-full);
+  background: #4ADE80;
+  animation: pulse-glow 2s ease-in-out infinite;
+  box-shadow: 0 0 8px rgba(74,222,128,0.4);
+}
+
+@media (max-width: 768px) {
+  .header-nav { gap: var(--space-4); }
+  .header-logo-text { font-size: var(--fs-base); }
+  .header-status { display: none; }
+}
